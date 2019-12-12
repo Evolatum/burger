@@ -35,11 +35,11 @@ var orm = {
     });
   },
 
-  insertOne: function(table, cols, vals, cb) {
-    var queryString = `INSERT INTO "${table}(${cols.toString()}) VALUES ?`;
+  insertOne: function(table, col, val, cb) {
+    var queryString = `INSERT INTO ${table}(${col.toString()}) VALUES (?);`;
     console.log(queryString);
 
-    connection.query(queryString, vals, function(err, result) {
+    connection.query(queryString, val, function(err, result) {
       if (err) {
         throw err;
       }
